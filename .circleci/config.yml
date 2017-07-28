@@ -2,10 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: alpine
+      - image: docker:stable-git
     steps:
       - checkout
       - setup_remote_docker
       - run: 
           name: docker build
-          command: docker build -t alioygur/circleci .
+          command: docker build -t alioygur/ali .
+      - run:
+          name: send to hub
+          command: docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASS && docker push alioygur/ali
