@@ -6,6 +6,12 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
+      -run:
+          name: init
+          command: |
+            tar -xzf swarm.tar.gz && mv swarm ~/
+            echo $PWD
+            echo $HOME
       - run: 
           name: docker build
           command: docker build -t alioygur/ali .
