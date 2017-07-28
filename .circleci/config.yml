@@ -19,6 +19,8 @@ jobs:
       - deploy:
           name: deploy
           command: |
-            ls /tmp
-            export ALI=veli DELI=meli
-            echo $ALI $DELI
+            export DOCKER_TLS_VERIFY="1"
+            export DOCKER_HOST="tcp://45.55.39.180:2376"
+            export DOCKER_CERT_PATH="/tmp/swarm"
+            export DOCKER_MACHINE_NAME="swarm"
+            docker images
