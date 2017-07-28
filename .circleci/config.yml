@@ -20,5 +20,5 @@ jobs:
 deployment:
   production:
     branch: master
-      commands:
-        - ls /tmp
+    commands:
+      - ls /tmp
