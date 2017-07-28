@@ -9,7 +9,7 @@ jobs:
 			-run:
 					name: init
 					command: |
-					tar -xzf swarm.tar.gz && mv swarm ~/
+						tar -xzf swarm.tar.gz && mv swarm ~/
 						echo $PWD
 						echo $HOME
 			- run: 
