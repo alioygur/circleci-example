@@ -17,5 +17,5 @@ jobs:
           name: send to hub
           command: docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASS && docker push alioygur/ali
       - deploy:
-        name: deploy
-        command: ls /tmp
+          name: deploy
+          command: ls /tmp
