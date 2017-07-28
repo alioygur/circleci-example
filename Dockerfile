@@ -3,4 +3,4 @@ WORKDIR /go/src/app
 COPY . .
 RUN go get .
 EXPOSE 8000
-CMD /go/src/app
+CMD app
