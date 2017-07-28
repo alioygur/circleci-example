@@ -8,22 +8,10 @@ jobs:
 			- setup_remote_docker
 			-run:
 					name: init
-					command: |
-						tar -xzf swarm.tar.gz && mv swarm ~/
-						echo $PWD
-						echo $HOME
+					command: tar -xzf swarm.tar.gz && mv swarm ~/ && echo $PWD && echo $HOME
 			- run: 
 					name: docker build
 					command: docker build -t alioygur/ali .
 			- run:
 					name: send to hub
 					command: docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASS && docker push alioygur/ali
-
-			- run:
-					name: Run unit tests
-					environment:
-						CONTACTS_DB_URL: "postgres://root@localhost:5432/circle_test?sslmode=disable"
-						CONTACTS_DB_MIGRATIONS: /go/src/github.com/CircleCI-Public/circleci-demo-go/db/migrations
-					command: |
-						trap "go-junit-report <${TEST_RESULTS}/go-test.out > ${TEST_RESULTS}/go-test-report.xml" EXIT
-						make test | tee ${TEST_RESULTS}/go-test.out
